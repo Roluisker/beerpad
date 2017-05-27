@@ -138,6 +138,7 @@ public class BluetoothConnectionService {
                 mmSocket.connect();
 
                 Log.d(TAG, "run: ConnectThread connected.");
+
             } catch (IOException e) {
                 // Close the socket
                 try {

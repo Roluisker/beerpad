@@ -16,7 +16,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.AdapterView;
+
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -30,12 +30,14 @@ import bluetooth.BluetoothConnectionService;
 /**
  * Created by luisalfonsobejaranosanchez on 5/27/17.
  */
-public class BeerPadSearchActivity extends Activity implements AdapterView.OnItemClickListener {
+public class BeerPadSearchActivity extends Activity {
 
     private static final String TAG = "BeedPadSearchActivity";
 
     private static final UUID MY_UUID_INSECURE =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+
+    private static final String BLUE_MAC = "20:16:03:10:15:75";
 
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
 
@@ -65,7 +67,6 @@ public class BeerPadSearchActivity extends Activity implements AdapterView.OnIte
 
         foundDevice = (ImageView) findViewById(R.id.foundDevice);
 
-
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
         registerReceiver(mBroadcastReceiver4, filter);
 
@@ -86,6 +87,10 @@ public class BeerPadSearchActivity extends Activity implements AdapterView.OnIte
         //byte[] bytes = etSend.getText().toString().getBytes();
         //mBluetoothConnection.write(bytes);
 
+    }
+
+    public void enviar(View view){
+        mBluetoothConnection.write("Aloha".getBytes());
     }
 
     private void foundDevice() {
@@ -169,8 +174,13 @@ public class BeerPadSearchActivity extends Activity implements AdapterView.OnIte
 
             if (action.equals(BluetoothDevice.ACTION_FOUND)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                mBTDevices.add(device);
+
                 Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
+
+                if(device.getAddress().equalsIgnoreCase(BLUE_MAC)){
+                    mBTDevices.add(device);
+                    foundDevice();
+                }
 
             }
         }
@@ -218,13 +228,10 @@ public class BeerPadSearchActivity extends Activity implements AdapterView.OnIte
         startBTConnection(mBTDevice, MY_UUID_INSECURE);
     }
 
-    /**
-     * starting chat service method
-     */
     public void startBTConnection(BluetoothDevice device, UUID uuid) {
         Log.d(TAG, "startBTConnection: Initializing RFCOM Bluetooth Connection.");
-
         mBluetoothConnection.startClient(device, uuid);
+        //mBluetoothConnection.write("Aloha".getBytes());
     }
 
 
@@ -289,8 +296,6 @@ public class BeerPadSearchActivity extends Activity implements AdapterView.OnIte
             registerReceiver(mBroadcastReceiver3, discoverDevicesIntent);
         }
 
-        foundDevice();
-
     }
 
     private void checkBTPermissions() {
@@ -306,14 +311,13 @@ public class BeerPadSearchActivity extends Activity implements AdapterView.OnIte
         }
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        //first cancel discovery because its very memory intensive.
+    public void onClickDevice(View view){
+
         mBluetoothAdapter.cancelDiscovery();
 
         Log.d(TAG, "onItemClick: You Clicked on a device.");
-        String deviceName = mBTDevices.get(i).getName();
-        String deviceAddress = mBTDevices.get(i).getAddress();
+        String deviceName = mBTDevices.get(0).getName();
+        String deviceAddress = mBTDevices.get(0).getAddress();
 
         Log.d(TAG, "onItemClick: deviceName = " + deviceName);
         Log.d(TAG, "onItemClick: deviceAddress = " + deviceAddress);
@@ -322,11 +326,14 @@ public class BeerPadSearchActivity extends Activity implements AdapterView.OnIte
         //NOTE: Requires API 17+? I think this is JellyBean
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
             Log.d(TAG, "Trying to pair with " + deviceName);
-            mBTDevices.get(i).createBond();
+            mBTDevices.get(0).createBond();
 
-            mBTDevice = mBTDevices.get(i);
+            mBTDevice = mBTDevices.get(0);
             mBluetoothConnection = new BluetoothConnectionService(BeerPadSearchActivity.this);
         }
+
+        startConnection();
+
     }
 
 
