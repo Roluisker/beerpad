@@ -3,6 +3,7 @@ package com.beerpad;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,12 +17,16 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
 
     private TripActionsFragment tripFragment;
 
+    private Toolbar mToolbar;
+
     private int mCurrentSelectedPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setUpToolBar();
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
@@ -31,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         }
 
     }
-
 
     @Override
     public void slideTripPanelUp() {
@@ -57,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    private void setUpToolBar() {
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("");
+        setSupportActionBar(mToolbar);
     }
 
     @Override

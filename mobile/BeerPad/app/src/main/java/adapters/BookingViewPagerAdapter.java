@@ -38,13 +38,12 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
 
         int bookIcons[] = new int[3];
         bookIcons[0] = R.drawable.ic_pageview_black_24dp;
-        bookIcons[1] = R.drawable.ic_pageview_black_24dp;
-        bookIcons[2] = R.drawable.ic_pageview_black_24dp;
+        bookIcons[1] = R.drawable.ic_record_voice_over_white_24dp;
+
 
         int manageIcons[] = new int[3];
-        manageIcons[0] = R.drawable.ic_pageview_black_24dp;
-        manageIcons[1] = R.drawable.ic_pageview_black_24dp;
-        manageIcons[2] = R.drawable.ic_pageview_black_24dp;
+        manageIcons[0] = R.drawable.ic_theaters_white_24dp;
+        manageIcons[1] = R.drawable.ic_event_note_white_24dp;
 
         bookTrips = BookTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_trips_titles), bookIcons);
         manageTrips = ManageTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_manage_titles), manageIcons);
@@ -135,7 +134,6 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
             return rootView;
 
         }
-
 
         protected void initializeChilds() {
             int childCount = mLinearContainer.getChildCount();

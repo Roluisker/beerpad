@@ -7,17 +7,14 @@
     </string-array>
 
     <!-- BookingViewPagerAdapter -->
-
     <string-array name="booking_adapter_trips_titles">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
+        <item>Search FlashBeer</item>
+        <item>Split Beer</item>
     </string-array>
 
     <string-array name="booking_adapter_manage_titles">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
+        <item>Photos</item>
+        <item>History</item>
     </string-array>
 
     <!-- Home Page -->
@@ -25,13 +22,13 @@
     <string name="homepage_main_title_symbol">Simbolo</string>
     <string name="homepage_sub_title">--- With FlashBeer ---</string>
 
-    <string name="book_trips">Cerveza</string>
-    <string name="manage_trips">Memorias</string>
+    <string name="book_trips">Beer</string>
+    <string name="manage_trips">Memories</string>
 
-    <string name="homepage_list_preferred">asdasdmopqmwe</string>
-    <string name="homepage_list_preferred_code">sdalskdmasd</string>
-    <string name="homepage_list_preferred_pts">sfsfwr</string>
-    <string name="homepage_list_preferred_value_pts">34,500</string>
+    <string name="homepage_list_preferred">Save with FlashBeer</string>
+    <string name="homepage_list_preferred_code">Saint Patricks Day!</string>
+    <string name="homepage_list_preferred_pts"></string>
+    <string name="homepage_list_preferred_value_pts">10,500</string>
 
     <!-- FirstPage Fragment Information -->
     <string name="firstpage_main_title">asdadqweqwe</string>

@@ -20,7 +20,7 @@
         android:visibility="gone"
         android:padding="10dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_pageview_black_24dp"
+        android:src="@drawable/ic_cancel_white_24dp"
         android:tint="#fff" />
 
     <include

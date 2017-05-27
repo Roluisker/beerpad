@@ -22,7 +22,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/ic_pageview_black_24dp" />
+            android:src="@drawable/ic_local_bar_white_24dp" />
 
         <TextView
             android:id="@+id/homepageMainPreferred"
@@ -90,7 +90,7 @@
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:clickable="true"
-            app:bookingIcon="@drawable/ic_pageview_black_24dp"
+            app:bookingIcon="@drawable/ic_local_bar_white_24dp"
             app:bookingTitle="@string/book_trips">
 
         </widget.BookingTabTitleWidget>
@@ -103,7 +103,7 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:clickable="true"
-            app:bookingIcon="@drawable/ic_pageview_black_24dp"
+            app:bookingIcon="@drawable/ic_dashboard_white_24dp"
             app:bookingTitle="@string/manage_trips">
 
         </widget.BookingTabTitleWidget>

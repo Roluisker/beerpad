@@ -17,7 +17,6 @@ import java.util.UUID;
 /**
  * Created by luisalfonsobejaranosanchez on 5/27/17.
  */
-
 public class BluetoothConnectionService {
 
     private static final String TAG = "BluetoothConnection";

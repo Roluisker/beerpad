@@ -18,7 +18,6 @@ import widget.BookingTabTitleWidget;
 /**
  * Created by luisalfonsobejaranosanchez on 5/27/17.
  */
-
 public class TripActionsFragment extends Fragment {
 
     private final String WIDGET_TAG = "TabTitleHomeViewPager";
@@ -65,7 +64,6 @@ public class TripActionsFragment extends Fragment {
         mManageTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.manage_trips);
 
         //Create/set viewpager adapter
-
         mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(),
                 getActivity().getResources().getStringArray(R.array.homepage_booking_tabs), getActivity());
 
