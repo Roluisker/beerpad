@@ -1,3 +1,58 @@
 <resources>
     <string name="app_name">BeerPad</string>
+
+    <string-array name="homepage_booking_tabs">
+        <item>Cerveza</item>
+        <item>Memorias</item>
+    </string-array>
+
+    <!-- BookingViewPagerAdapter -->
+
+    <string-array name="booking_adapter_trips_titles">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="booking_adapter_manage_titles">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!-- Home Page -->
+    <string name="homepage_main_title">Tituli</string>
+    <string name="homepage_main_title_symbol">Simbolo</string>
+    <string name="homepage_sub_title">--- promocion ---</string>
+
+    <string name="book_trips">Cerveza</string>
+    <string name="manage_trips">Memorias</string>
+
+    <string name="homepage_list_preferred">asdasdmopqmwe</string>
+    <string name="homepage_list_preferred_code">sdalskdmasd</string>
+    <string name="homepage_list_preferred_pts">sfsfwr</string>
+    <string name="homepage_list_preferred_value_pts">34,500</string>
+
+    <!-- FirstPage Fragment Information -->
+    <string name="firstpage_main_title">asdadqweqwe</string>
+    <string name="firstpage_sub_title">sdfsfsdfd \n qweqwrwerwr</string>
+    <string name="firstpage_book_now">Ahora!</string>
+
+    <!-- SecondPage Fragment Information -->
+    <string name="secondpage_main_title_first">Adadadqweqwe</string>
+    <string name="secondpage_main_title_second">Promo!</string>
+    <string name="secondpage_information"> <![CDATA[  <b>  asdadsasd </b>  <br> wwerwrew <b> $10k </b>   ]]></string>
+    <string name="secondpage_sub_title_top">dadwertgdgf</string>
+    <string name="secondpage_sub_title_middle">wmslkmfls</string>
+    <string name="secondpage_sub_title_end">$10k</string>
+
+    <!-- Third Fragment Information -->
+    <string name="thirdpage_main_title_second">todaasads</string>
+    <string name="thirdpage_main_title_top">reterte</string>
+    <string name="thirdpage_main_title_middle">Siempre \n Todas!</string>
+    <string name="thirdpage_main_title_bottom">sfmklwmrlww</string>
+    <string name="thirdpage_details">Detalles</string>
+
+    <string name="action_settings">Settings</string>
+
 </resources>

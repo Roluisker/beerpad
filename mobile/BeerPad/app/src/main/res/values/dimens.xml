@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="divider_booking">1dp</dimen>
+    <dimen name="footer_page_information_circle_size">12dp</dimen>
+    <dimen name="height_items_homepage">67dp</dimen>
+</resources>
