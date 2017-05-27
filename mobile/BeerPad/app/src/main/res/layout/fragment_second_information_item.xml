@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/homepageDiscountRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/second_beer" />
+
+    <LinearLayout
+        android:id="@+id/mainInformationContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/secondpage_main_title_first"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/neutral_white"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/secondpage_main_title_second"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/homepage_main_title"
+            android:textSize="45sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/secondaryInformationContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mainInformationContainer"
+        android:layout_alignStart="@+id/mainInformationContainer"
+        android:layout_below="@+id/mainInformationContainer"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/secondInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/secondpage_sub_title_top"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/neutral_white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/secondInformationBooking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/secondPageSubTitleMiddle"
+            android:layout_marginTop="10dp"
+            android:text="@string/firstpage_book_now"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/information_book_blue_text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/secondPageSubTitleMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/secondInformation"
+            android:text="@string/secondpage_sub_title_middle"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/neutral_white" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/secondPageSubTitleMiddle"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/secondPageSubTitleMiddle"
+            android:layout_toRightOf="@+id/secondPageSubTitleMiddle"
+            android:text="@string/secondpage_sub_title_end"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/neutral_white"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

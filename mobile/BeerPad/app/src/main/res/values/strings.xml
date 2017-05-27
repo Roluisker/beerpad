@@ -21,9 +21,9 @@
     </string-array>
 
     <!-- Home Page -->
-    <string name="homepage_main_title">Tituli</string>
+    <string name="homepage_main_title">Half Price</string>
     <string name="homepage_main_title_symbol">Simbolo</string>
-    <string name="homepage_sub_title">--- promocion ---</string>
+    <string name="homepage_sub_title">--- With FlashBeer ---</string>
 
     <string name="book_trips">Cerveza</string>
     <string name="manage_trips">Memorias</string>
