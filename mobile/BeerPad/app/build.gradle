@@ -27,6 +27,7 @@ dependencies {
 
 
     compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:recyclerview-v7:25.3.0'
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
     compile 'com.afollestad.material-dialogs:commons:0.9.4.5'
     compile 'com.github.john990:WaveView:v0.9'

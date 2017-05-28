@@ -124,6 +124,17 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
                         }
                     });
                     break;
+
+                case 1:
+
+                    view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            AppHelper.screenManager.showSplitBeerScreen(getActivity());
+                        }
+                    });
+
+                    break;
             }
 
         }

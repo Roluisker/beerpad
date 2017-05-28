@@ -24,7 +24,6 @@ import android.widget.LinearLayout;
 import com.john.waveview.WaveView;
 import com.skyfishjy.library.RippleBackground;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -32,12 +31,7 @@ import bluetooth.BluetoothConnectionService;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -70,13 +64,13 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
 
     private boolean hasBeer = false;
 
-    OkHttpClient client;
+    private OkHttpClient client;
 
-    MediaType JSON;
+    private MediaType JSON;
 
     public String urlBar= "http://10.105.168.180:8000/api/info/?phone=7778899&bar=moes";
     public String paymentUrl = "http://10.105.168.180:8000/api/payment/?phone=7778899&bar=moes&table=01&beer=1000";
-
+    public String paymentSplitUrl = "http://10.105.168.180:8000/api/payment/?phone=7778899&bar=moes&table=01&beer=1000&split=7778899,3136064315";
 
 
     @Override
@@ -310,19 +304,6 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
             registerReceiver(mBroadcastReceiver1, BTIntent);
         }
 
-
-    }
-
-
-    public void btnEnableDisable_Discoverable(View view) {
-        Log.d(TAG, "btnEnableDisable_Discoverable: Making device discoverable for 300 seconds.");
-
-        Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-        startActivity(discoverableIntent);
-
-        IntentFilter intentFilter = new IntentFilter(mBluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
-        registerReceiver(mBroadcastReceiver2, intentFilter);
 
     }
 
