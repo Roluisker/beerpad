@@ -14,6 +14,7 @@ import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -24,7 +25,9 @@ import android.widget.LinearLayout;
 import com.john.waveview.WaveView;
 import com.skyfishjy.library.RippleBackground;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.UUID;
 
 import bluetooth.BluetoothConnectionService;
@@ -69,9 +72,10 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
     private MediaType JSON;
 
     public String urlBar= "http://10.105.168.180:8000/api/info/?phone=7778899&bar=moes";
-    public String paymentUrl = "http://10.105.168.180:8000/api/payment/?phone=7778899&bar=moes&table=01&beer=1000";
+    public String paymentUrl = "http://10.105.168.180:8000/api/payment/?phone=7778899&bar=moes&table=01";
 
-
+    private String strDate = "";
+    private String strEndDate = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,9 +102,6 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
         client = new OkHttpClient();
 
         JSON = MediaType.parse("application/json; charset=utf-8");
-
-        OkHttpHandler okHttpHandler= new OkHttpHandler();
-        okHttpHandler.execute(paymentUrl);
 
     }
 
@@ -392,17 +393,32 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
     }
 
 
+
     public void sendBeer(View view){
 
         if(!hasBeer){
             mBluetoothConnection.write("1".getBytes());
-            Log.d("ESTA CONECTADO", "ENVIE UNO");
             mWaveView.setVisibility(View.VISIBLE);
+
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+            strDate = sdf.format(c.getTime());
+
             hasBeer = true;
         }else if(hasBeer){
             mBluetoothConnection.write("0".getBytes());
             mWaveView.setVisibility(View.INVISIBLE);
             Log.d("ESTA CONECTADO", "ENVIE CERO");
+
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+            strEndDate = sdf.format(c.getTime());
+
+            paymentUrl += "&start="+strDate+"&end="+strEndDate;
+
+            OkHttpHandler okHttpHandler= new OkHttpHandler();
+            okHttpHandler.execute(paymentUrl);
+
             hasBeer = false;
         }
 

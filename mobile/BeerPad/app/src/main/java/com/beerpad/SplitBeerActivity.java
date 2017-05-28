@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,7 @@ public class SplitBeerActivity extends Activity implements SplitHolder.SplitList
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-        persons.add(new Person("Luis","3136078321"));
+        persons.add(new Person("Luis", "3136078321"));
 
         client = new OkHttpClient();
 
@@ -61,7 +60,7 @@ public class SplitBeerActivity extends Activity implements SplitHolder.SplitList
         AppHelper.screenManager.showSearchBeerScreen(this);
     }
 
-    public class OkHttpSplitHandler extends AsyncTask<String,Void,String> {
+    public class OkHttpSplitHandler extends AsyncTask<String, Void, String> {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -75,7 +74,7 @@ public class SplitBeerActivity extends Activity implements SplitHolder.SplitList
             try {
                 Response response = client.newCall(request).execute();
                 return response.body().string();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
