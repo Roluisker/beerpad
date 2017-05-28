@@ -264,10 +264,23 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
     protected void onDestroy() {
         Log.d(TAG, "onDestroy: called.");
         super.onDestroy();
-        unregisterReceiver(mBroadcastReceiver1);
-        unregisterReceiver(mBroadcastReceiver2);
-        unregisterReceiver(mBroadcastReceiver3);
-        unregisterReceiver(mBroadcastReceiver4);
+
+        if(mBroadcastReceiver1.isOrderedBroadcast()){
+            unregisterReceiver(mBroadcastReceiver2);
+        }
+
+        if(mBroadcastReceiver2.isOrderedBroadcast()){
+            unregisterReceiver(mBroadcastReceiver2);
+        }
+
+        if(mBroadcastReceiver3.isOrderedBroadcast()){
+            unregisterReceiver(mBroadcastReceiver3);
+        }
+
+        if(mBroadcastReceiver4.isOrderedBroadcast()){
+            unregisterReceiver(mBroadcastReceiver4);
+        }
+
         //mBluetoothAdapter.cancelDiscovery();
     }
 
