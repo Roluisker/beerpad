@@ -70,7 +70,7 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
 
     public String urlBar= "http://10.105.168.180:8000/api/info/?phone=7778899&bar=moes";
     public String paymentUrl = "http://10.105.168.180:8000/api/payment/?phone=7778899&bar=moes&table=01&beer=1000";
-    public String paymentSplitUrl = "http://10.105.168.180:8000/api/payment/?phone=7778899&bar=moes&table=01&beer=1000&split=7778899,3136064315";
+
 
 
     @Override
