@@ -11,7 +11,8 @@ import homepage.BigPagerHomeFragment;
 import homepage.TripActionsFragment;
 import utils.AppHelper;
 
-public class MainActivity extends AppCompatActivity implements BigPagerHomeFragment.SlidePanelListener {
+public class MainActivity extends AppCompatActivity implements BigPagerHomeFragment.SlidePanelListener,
+        TripActionsFragment.OnTabSelectedListener {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 
@@ -84,5 +85,10 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public void onTabSelected(int position) {
+
+    }
 
 }

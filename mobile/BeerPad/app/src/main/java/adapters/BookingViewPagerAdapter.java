@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,12 @@ import android.widget.TextView;
 import com.beerpad.R;
 
 import utils.AnimationGenericUtils;
+import utils.AppHelper;
 
 /**
  * Created by luisalfonsobejaranosanchez on 5/27/17.
  */
-
 public class BookingViewPagerAdapter extends FragmentPagerAdapter {
-
 
     private Context context;
     private String[] mPageTitles;
@@ -39,7 +39,6 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
         int bookIcons[] = new int[3];
         bookIcons[0] = R.drawable.ic_pageview_black_24dp;
         bookIcons[1] = R.drawable.ic_record_voice_over_white_24dp;
-
 
         int manageIcons[] = new int[3];
         manageIcons[0] = R.drawable.ic_theaters_white_24dp;
@@ -114,6 +113,21 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
             return fragment;
         }
 
+        private void setListeners(int index, View view) {
+
+            switch (index) {
+                case 0:
+                    view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            AppHelper.screenManager.showSearchBeerScreen(getActivity());
+                        }
+                    });
+                    break;
+            }
+
+        }
+
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -140,6 +154,7 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
             mItems = new RelativeLayout[childCount];
             for (int b = 0; b < childCount; b++) {
                 mItems[b] = (RelativeLayout) mLinearContainer.getChildAt(b);
+                setListeners(b, mItems[b]);
                 ((TextView) mItems[b].findViewById(R.id.item_homepage_first_title)).setText(titles[b]);
                 ((ImageView) mItems[b].findViewById(R.id.item_homepage_first_icon)).setImageResource(drawables[b]);
             }
@@ -173,7 +188,7 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
                     view.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            //utils.AppHelper.screenManager.showCheckInSearchScreen(getActivity(), null);
+
                         }
                     });
                     break;

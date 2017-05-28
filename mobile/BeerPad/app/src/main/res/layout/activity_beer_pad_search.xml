@@ -5,15 +5,17 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/search_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
+        <com.skyfishjy.library.RippleBackground
+            xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ripple_background_content"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="match_parent"
             app:rb_color="#0099CC"
             app:rb_duration="3000"
             app:rb_radius="32dp"
@@ -26,7 +28,8 @@
                 android:layout_height="64dp"
                 android:layout_centerInParent="true"
                 android:onClick="btnDiscover"
-                android:src="@drawable/ic_pageview_black_24dp" />
+                android:background="@drawable/round_button"
+                android:src="@drawable/ic_stay_primary_portrait_white_24dp" />
 
             <ImageView
                 android:id="@+id/foundDevice"
@@ -37,15 +40,11 @@
                 android:layout_marginRight="6dp"
                 android:layout_toLeftOf="@id/centerImage"
                 android:onClick="onClickDevice"
-                android:src="@drawable/ic_pageview_black_24dp"
+                android:tint="@color/black"
+                android:src="@drawable/ic_speaker_phone_white_24dp"
                 android:visibility="invisible" />
-        </com.skyfishjy.library.RippleBackground>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="enviar"
-            android:text="boton" />
+        </com.skyfishjy.library.RippleBackground>
 
     </LinearLayout>
 

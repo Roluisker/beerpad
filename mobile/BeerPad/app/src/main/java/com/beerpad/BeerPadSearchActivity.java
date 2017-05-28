@@ -17,8 +17,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.skyfishjy.library.RippleBackground;
 
@@ -30,9 +30,9 @@ import bluetooth.BluetoothConnectionService;
 /**
  * Created by luisalfonsobejaranosanchez on 5/27/17.
  */
-public class BeerPadSearchActivity extends Activity {
+public class BeerPadSearchActivity extends Activity implements BluetoothConnectionService.BluetoothListener {
 
-    private static final String TAG = "BeedPadSearchActivity";
+    private static final String TAG = "BeerPadSearchActivity";
 
     private static final UUID MY_UUID_INSECURE =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -42,17 +42,16 @@ public class BeerPadSearchActivity extends Activity {
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
 
     private BluetoothAdapter mBluetoothAdapter;
-    private Button btnEnableDisable_Discoverable;
 
     private BluetoothConnectionService mBluetoothConnection;
-
-    private Button btnStartConnection;
 
     private BluetoothDevice mBTDevice;
 
     private RippleBackground rippleBackground;
 
     private ImageView foundDevice;
+
+    private LinearLayout mSearchContainer;
 
 
     @Override
@@ -61,9 +60,10 @@ public class BeerPadSearchActivity extends Activity {
         setContentView(R.layout.activity_beer_pad_search);
 
         mBTDevices = new ArrayList<>();
-        //btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
 
         rippleBackground = (RippleBackground) findViewById(R.id.ripple_background_content);
+
+        mSearchContainer = (LinearLayout) findViewById(R.id.search_container);
 
         foundDevice = (ImageView) findViewById(R.id.foundDevice);
 
@@ -72,22 +72,30 @@ public class BeerPadSearchActivity extends Activity {
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        //enableDisableBT();
+        enableDisableBT();
 
-        /*
-        btnStartConnection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startConnection();
-            }
-        });
-        */
-
-        // Envia datos
-        //byte[] bytes = etSend.getText().toString().getBytes();
-        //mBluetoothConnection.write(bytes);
+        mBluetoothConnection.setBluetoothListener(this);
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (this instanceof BluetoothConnectionService.BluetoothListener) {
+            listener = (BluetoothConnectionService.BluetoothListener) this;
+        } else {
+            throw new ClassCastException  (" must implement MyListFragment.MyCustomObjectListener");
+
+        }
+
+    }
+
+
+
+    private BluetoothConnectionService.BluetoothListener listener;
+
+
 
     public void enviar(View view){
         mBluetoothConnection.write("Aloha".getBytes());
@@ -212,7 +220,6 @@ public class BeerPadSearchActivity extends Activity {
         }
     };
 
-
     @Override
     protected void onDestroy() {
         Log.d(TAG, "onDestroy: called.");
@@ -236,9 +243,11 @@ public class BeerPadSearchActivity extends Activity {
 
 
     public void enableDisableBT() {
+
         if (mBluetoothAdapter == null) {
             Log.d(TAG, "enableDisableBT: Does not have BT capabilities.");
         }
+
         if (!mBluetoothAdapter.isEnabled()) {
             Log.d(TAG, "enableDisableBT: enabling BT.");
             Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -247,13 +256,7 @@ public class BeerPadSearchActivity extends Activity {
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
             registerReceiver(mBroadcastReceiver1, BTIntent);
         }
-        if (mBluetoothAdapter.isEnabled()) {
-            Log.d(TAG, "enableDisableBT: disabling BT.");
-            mBluetoothAdapter.disable();
 
-            IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            registerReceiver(mBroadcastReceiver1, BTIntent);
-        }
 
     }
 
@@ -336,5 +339,9 @@ public class BeerPadSearchActivity extends Activity {
 
     }
 
+    @Override
+    public void isBluetoothConnected(boolean isConnected) {
+        Log.d("ESTA CONECTADO", "CONECTADO");
+    }
 
 }

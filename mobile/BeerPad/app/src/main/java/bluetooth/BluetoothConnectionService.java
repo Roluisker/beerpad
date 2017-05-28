@@ -27,14 +27,14 @@ public class BluetoothConnectionService {
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     private final BluetoothAdapter mBluetoothAdapter;
-    Context mContext;
+    private Context mContext;
 
     private AcceptThread mInsecureAcceptThread;
 
     private ConnectThread mConnectThread;
     private BluetoothDevice mmDevice;
     private UUID deviceUUID;
-    ProgressDialog mProgressDialog;
+    private ProgressDialog mProgressDialog;
 
     private ConnectedThread mConnectedThread;
 
@@ -101,6 +101,8 @@ public class BluetoothConnectionService {
 
     }
 
+
+
     private class ConnectThread extends Thread {
         private BluetoothSocket mmSocket;
 
@@ -136,6 +138,10 @@ public class BluetoothConnectionService {
                 // successful connection or an exception
                 mmSocket.connect();
 
+                if(BluetoothListener != null){
+                    BluetoothListener.isBluetoothConnected(true);
+                }
+
                 Log.d(TAG, "run: ConnectThread connected.");
 
             } catch (IOException e) {
@@ -160,6 +166,17 @@ public class BluetoothConnectionService {
                 Log.e(TAG, "cancel: close() of mmSocket in Connectthread failed. " + e.getMessage());
             }
         }
+    }
+
+    private BluetoothListener BluetoothListener;
+
+
+    public interface BluetoothListener {
+         void isBluetoothConnected(boolean isConnected);
+    }
+
+    public void setBluetoothListener(BluetoothListener listener) {
+        this.BluetoothListener = listener;
     }
 
     public synchronized void start() {

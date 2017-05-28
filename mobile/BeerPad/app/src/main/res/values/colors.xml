@@ -13,5 +13,6 @@
     <color name="information_book_blue_text">#4161AA</color>
     <color name="transparent_gray_3">#35000000</color>
     <color name="transparent_gray">#308f8f8f</color>
+    <color name="black">#30000000</color>
 
 </resources>
