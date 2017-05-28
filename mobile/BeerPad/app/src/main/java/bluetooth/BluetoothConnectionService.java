@@ -38,9 +38,19 @@ public class BluetoothConnectionService {
 
     private ConnectedThread mConnectedThread;
 
+    private BluetoothListener bluetoothListener;
+
+
     public BluetoothConnectionService(Context context) {
         mContext = context;
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        try {
+            bluetoothListener = (BluetoothListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.getClass().getSimpleName() + " must implement SlidePanelListener interface");
+        }
+
         start();
     }
 
@@ -138,8 +148,8 @@ public class BluetoothConnectionService {
                 // successful connection or an exception
                 mmSocket.connect();
 
-                if(BluetoothListener != null){
-                    BluetoothListener.isBluetoothConnected(true);
+                if(bluetoothListener != null){
+                    bluetoothListener.isBluetoothConnected(true);
                 }
 
                 Log.d(TAG, "run: ConnectThread connected.");
@@ -168,15 +178,13 @@ public class BluetoothConnectionService {
         }
     }
 
-    private BluetoothListener BluetoothListener;
-
 
     public interface BluetoothListener {
          void isBluetoothConnected(boolean isConnected);
     }
 
     public void setBluetoothListener(BluetoothListener listener) {
-        this.BluetoothListener = listener;
+        this.bluetoothListener = listener;
     }
 
     public synchronized void start() {

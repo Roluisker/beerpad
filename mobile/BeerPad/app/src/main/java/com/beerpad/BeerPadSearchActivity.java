@@ -74,27 +74,9 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
 
         enableDisableBT();
 
-        mBluetoothConnection.setBluetoothListener(this);
+        //mBluetoothConnection.setBluetoothListener(this);
 
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (this instanceof BluetoothConnectionService.BluetoothListener) {
-            listener = (BluetoothConnectionService.BluetoothListener) this;
-        } else {
-            throw new ClassCastException  (" must implement MyListFragment.MyCustomObjectListener");
-
-        }
-
-    }
-
-
-
-    private BluetoothConnectionService.BluetoothListener listener;
-
 
 
     public void enviar(View view){
