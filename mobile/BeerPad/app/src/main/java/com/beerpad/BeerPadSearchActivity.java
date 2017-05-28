@@ -53,6 +53,8 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
 
     private LinearLayout mSearchContainer;
 
+    private boolean hasBeer = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,11 +78,6 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
 
         //mBluetoothConnection.setBluetoothListener(this);
 
-    }
-
-
-    public void enviar(View view){
-        mBluetoothConnection.write("Aloha".getBytes());
     }
 
     private void foundDevice() {
@@ -323,7 +320,36 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
 
     @Override
     public void isBluetoothConnected(boolean isConnected) {
-        Log.d("ESTA CONECTADO", "CONECTADO");
+
+        if(isConnected){
+
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    mSearchContainer.removeView(rippleBackground);
+                }
+            });
+
+        }
+
+    }
+
+
+
+    public void sendBeer(View view){
+
+        if(!hasBeer){
+            mBluetoothConnection.write("1".getBytes());
+            Log.d("ESTA CONECTADO", "ENVIE UNO");
+            hasBeer = true;
+        }else if(hasBeer){
+            mBluetoothConnection.write("0".getBytes());
+            Log.d("ESTA CONECTADO", "ENVIE CERO");
+            hasBeer = false;
+        }
+
+
     }
 
 }
