@@ -11,6 +11,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,10 +24,21 @@ import android.widget.LinearLayout;
 import com.john.waveview.WaveView;
 import com.skyfishjy.library.RippleBackground;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
 import bluetooth.BluetoothConnectionService;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by luisalfonsobejaranosanchez on 5/27/17.
@@ -58,6 +70,14 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
 
     private boolean hasBeer = false;
 
+    OkHttpClient client;
+
+    MediaType JSON;
+
+    public String urlBar= "http://10.105.168.180:8000/api/info/?phone=7778899&bar=moes";
+    public String paymentUrl = "http://10.105.168.180:8000/api/payment/?phone=7778899&bar=moes&table=01&beer=1000";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +101,45 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
 
         enableDisableBT();
 
-        //mBluetoothConnection.setBluetoothListener(this);
+        client = new OkHttpClient();
+
+        JSON = MediaType.parse("application/json; charset=utf-8");
+
+        OkHttpHandler okHttpHandler= new OkHttpHandler();
+        okHttpHandler.execute(paymentUrl);
 
     }
+
+    public class OkHttpHandler extends AsyncTask<String,Void,String> {
+
+        OkHttpClient client = new OkHttpClient();
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            Request.Builder builder = new Request.Builder();
+            builder.url(params[0]);
+            Request request = builder.build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                return response.body().string();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Log.d("RESPUESTA ", s);
+
+        }
+
+
+    }
+
 
     private void foundDevice() {
         AnimatorSet animatorSet = new AnimatorSet();

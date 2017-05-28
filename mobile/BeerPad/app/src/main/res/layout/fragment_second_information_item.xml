@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:text="@string/secondpage_main_title_first"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:visibility="invisible"
             android:textColor="@color/neutral_white"
             android:textStyle="italic" />
 

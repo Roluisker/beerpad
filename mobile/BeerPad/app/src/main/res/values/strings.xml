@@ -31,24 +31,24 @@
     <string name="homepage_list_preferred_value_pts">10,500</string>
 
     <!-- FirstPage Fragment Information -->
-    <string name="firstpage_main_title">asdadqweqwe</string>
-    <string name="firstpage_sub_title">sdfsfsdfd \n qweqwrwerwr</string>
-    <string name="firstpage_book_now">Ahora!</string>
+    <string name="firstpage_main_title">Beer!</string>
+    <string name="firstpage_sub_title">The best \n way</string>
+    <string name="firstpage_book_now">Now!</string>
 
     <!-- SecondPage Fragment Information -->
-    <string name="secondpage_main_title_first">Adadadqweqwe</string>
-    <string name="secondpage_main_title_second">Promo!</string>
-    <string name="secondpage_information"> <![CDATA[  <b>  asdadsasd </b>  <br> wwerwrew <b> $10k </b>   ]]></string>
-    <string name="secondpage_sub_title_top">dadwertgdgf</string>
-    <string name="secondpage_sub_title_middle">wmslkmfls</string>
+    <string name="secondpage_main_title_first"></string>
+    <string name="secondpage_main_title_second">NFL!</string>
+    <string name="secondpage_information"> <![CDATA[  <b>  Football </b>  <br> day <b> $10k </b>   ]]></string>
+    <string name="secondpage_sub_title_top">Football day</string>
+    <string name="secondpage_sub_title_middle">promotion!</string>
     <string name="secondpage_sub_title_end">$10k</string>
 
     <!-- Third Fragment Information -->
     <string name="thirdpage_main_title_second">todaasads</string>
-    <string name="thirdpage_main_title_top">reterte</string>
-    <string name="thirdpage_main_title_middle">Siempre \n Todas!</string>
-    <string name="thirdpage_main_title_bottom">sfmklwmrlww</string>
-    <string name="thirdpage_details">Detalles</string>
+    <string name="thirdpage_main_title_top">Casino</string>
+    <string name="thirdpage_main_title_middle">All \n Time!</string>
+    <string name="thirdpage_main_title_bottom">spot with cool beer</string>
+    <string name="thirdpage_details">Check</string>
 
     <string name="action_settings">Settings</string>
 
