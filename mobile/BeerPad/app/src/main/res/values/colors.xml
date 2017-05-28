@@ -10,6 +10,7 @@
     <color name="homepage_main_title">#FF0000</color>
     <color name="homepage_sub_title">#000047</color>
     <color name="information_book_text">#FCDB07</color>
+    <color name="information_book_text_2">#93810d</color>
     <color name="information_book_blue_text">#4161AA</color>
     <color name="transparent_gray_3">#35000000</color>
     <color name="transparent_gray">#308f8f8f</color>

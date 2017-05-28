@@ -20,6 +20,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.john.waveview.WaveView;
 import com.skyfishjy.library.RippleBackground;
 
 import java.util.ArrayList;
@@ -53,6 +54,8 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
 
     private LinearLayout mSearchContainer;
 
+    private WaveView mWaveView;
+
     private boolean hasBeer = false;
 
 
@@ -68,6 +71,8 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
         mSearchContainer = (LinearLayout) findViewById(R.id.search_container);
 
         foundDevice = (ImageView) findViewById(R.id.foundDevice);
+
+        mWaveView = (WaveView) findViewById(R.id.wave_view);
 
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
         registerReceiver(mBroadcastReceiver4, filter);
@@ -327,6 +332,7 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
 
                 @Override
                 public void run() {
+                    mWaveView.setVisibility(View.VISIBLE);
                     mSearchContainer.removeView(rippleBackground);
                 }
             });
@@ -336,15 +342,16 @@ public class BeerPadSearchActivity extends Activity implements BluetoothConnecti
     }
 
 
-
     public void sendBeer(View view){
 
         if(!hasBeer){
             mBluetoothConnection.write("1".getBytes());
             Log.d("ESTA CONECTADO", "ENVIE UNO");
+            mWaveView.setVisibility(View.VISIBLE);
             hasBeer = true;
         }else if(hasBeer){
             mBluetoothConnection.write("0".getBytes());
+            mWaveView.setVisibility(View.INVISIBLE);
             Log.d("ESTA CONECTADO", "ENVIE CERO");
             hasBeer = false;
         }
